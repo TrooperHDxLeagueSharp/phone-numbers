@@ -1,0 +1,71 @@
+<html>
+
+<head>
+	<title>Phone number input control</title>
+	<style>
+		* { font-family: sans-serif; }
+	</style>
+	<script src="jquery-2.2.3.min.js"></script>
+</head>
+
+<body>
+
+Enter your number in binary: <b id="pn">000-000-0000</b>
+
+<br />
+
+<input type="checkbox" data-place="33" />
+<input type="checkbox" data-place="32" />
+<input type="checkbox" data-place="31" />
+<input type="checkbox" data-place="30" />
+<input type="checkbox" data-place="29" />
+<input type="checkbox" data-place="28" />
+<input type="checkbox" data-place="27" />
+<input type="checkbox" data-place="26" />
+<input type="checkbox" data-place="25" />
+<input type="checkbox" data-place="24" />
+<input type="checkbox" data-place="23" />
+<input type="checkbox" data-place="22" />
+<input type="checkbox" data-place="21" />
+<input type="checkbox" data-place="20" />
+<input type="checkbox" data-place="19" />
+<input type="checkbox" data-place="18" />
+<input type="checkbox" data-place="17" />
+<input type="checkbox" data-place="16" />
+<input type="checkbox" data-place="15" />
+<input type="checkbox" data-place="14" />
+<input type="checkbox" data-place="13" />
+<input type="checkbox" data-place="12" />
+<input type="checkbox" data-place="11" />
+<input type="checkbox" data-place="10" />
+<input type="checkbox" data-place="9" />
+<input type="checkbox" data-place="8" />
+<input type="checkbox" data-place="7" />
+<input type="checkbox" data-place="6" />
+<input type="checkbox" data-place="5" />
+<input type="checkbox" data-place="4" />
+<input type="checkbox" data-place="3" />
+<input type="checkbox" data-place="2" />
+<input type="checkbox" data-place="1" />
+<input type="checkbox" data-place="0" />
+
+<script type="text/javascript">
+function pn(n) {
+	var output = "" + n;
+	while (output.length < 10) output = "0" + output;
+	return (output.length > 10 ? output.slice(0, -10) + "-" : "") +
+	 	output.slice(-10, -7) + "-" +
+		output.slice(-7, -4) + "-" +
+		output.slice(-4);
+}
+
+$("input").click(function() {
+	var n = 0;
+	$("input").each(function(idx) { if ($(this).prop("checked")) n += Math.pow(2, $(this).data().place) });
+	$("#pn").html(pn(n));
+});
+</script>
+
+</body>
+
+</html>
